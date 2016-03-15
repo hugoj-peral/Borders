@@ -9,7 +9,7 @@
 import Foundation
 
 enum Method: String {
-    case GET = "GET"
+    case GET
 }
 
 protocol Resource {

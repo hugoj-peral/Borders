@@ -18,6 +18,8 @@ protocol BordersViewModelType: class {
     
     /// The corresponding borders
     var borders: Observable<[Border]> { get }
+    
+    init(countryName: String)
 }
 
 class BordersViewModel: BordersViewModelType {
@@ -27,7 +29,7 @@ class BordersViewModel: BordersViewModelType {
     
     private let countriesClient = APIClient.countriesAPIClient()
     
-    init(countryName: String) {
+    required init(countryName: String) {
         self.countryName = countryName
         
         // Create a copy of the client to avoid referencing
@@ -53,5 +55,45 @@ class BordersViewModel: BordersViewModelType {
             .observeOn(MainScheduler.instance)
             // Make sure multiple subscriptions share the side effects
             .shareReplay(1)
+    }
+}
+
+class BordersClientWithoutRxViewModel: BordersViewModelType {
+
+    let countryName: String
+    let borders: Observable<[Border]>
+    
+    private let countriesClient = APIClientWithoutRx.countriesAPIClient()
+    
+    required init(countryName: String) {
+        self.countryName = countryName
+        
+        let client = countriesClient
+        
+        self.borders = Observable.create({ observer -> Disposable in
+            
+            client.countryWithName(countryName, completion: { (result: APIClientResult<Country, APIClientError>) -> Void in
+                switch result {
+                case let .Success(country):
+                    client.countriesWithCodes(country.borders, completion: { (result: APIClientResult<[Country], APIClientError>) -> Void in
+                        switch result {
+                        case let .Success(countries):
+                            observer.onNext(countries.map { (name: $0.name, nativeName: $0.nativeName) })
+                            observer.onCompleted()
+                        case let .Failure(error):
+                            print("Error: \(error)")
+                            observer.onNext([])
+                            observer.onCompleted()
+                        }
+                    })
+                case let .Failure(error):
+                    print("Error: \(error)")
+                    observer.onNext([])
+                    observer.onCompleted()
+                }
+            })
+            
+            return AnonymousDisposable {}
+        })
     }
 }

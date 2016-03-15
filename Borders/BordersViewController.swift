@@ -27,7 +27,7 @@ class BordersViewController: UITableViewController {
     }
     
     convenience init(countryName: String) {
-        self.init(viewModel: BordersViewModel(countryName: countryName))
+        self.init(viewModel: BordersClientWithoutRxViewModel(countryName: countryName))
     }
     
     required init?(coder aDecoder: NSCoder) {

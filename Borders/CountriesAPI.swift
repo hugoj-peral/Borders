@@ -54,3 +54,26 @@ extension APIClient {
         return objects(CountriesAPI.AlphaCodes(codes: codes))
     }
 }
+
+extension APIClientWithoutRx {
+    class func countriesAPIClient() -> APIClientWithoutRx {
+        return APIClientWithoutRx(baseURL: NSURL.countriesURL())
+    }
+    
+    func countryWithName(name: String, completion: (APIClientResult<Country, APIClientError>) -> Void) {
+        objects(CountriesAPI.Name(name: name)) { (result: APIClientResult<[Country], APIClientError>) -> Void in
+            switch result {
+            case let .Success(countries):
+                completion(APIClientResult.Success(countries[0]))
+            case let .Failure(error):
+                completion(APIClientResult.Failure(error))
+            }
+        }
+    }
+    
+    func countriesWithCodes(codes: [String], completion: (APIClientResult<[Country], APIClientError>) -> Void) {
+        objects(CountriesAPI.AlphaCodes(codes: codes)) { (result: APIClientResult<[Country], APIClientError>) -> Void in
+            completion(result)
+        }
+    }
+}
