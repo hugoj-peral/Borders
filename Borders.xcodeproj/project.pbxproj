@@ -27,6 +27,7 @@
 		82043AC71C554A6E0097CF7F /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82043AC61C554A6E0097CF7F /* APIClientTests.swift */; };
 		82043AC91C554C400097CF7F /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 82043AC81C554C400097CF7F /* test.json */; };
 		8EAD30177025E9FB8290DB8E /* Pods_Borders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9D33A4DBCB78E27D2FAFB52 /* Pods_Borders.framework */; };
+		9AFD61091CA40A9500E1CC32 /* APIClientWithoutRxTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFD61081CA40A9500E1CC32 /* APIClientWithoutRxTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		82043AC41C5549DC0097CF7F /* ResourceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTests.swift; sourceTree = "<group>"; };
 		82043AC61C554A6E0097CF7F /* APIClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
 		82043AC81C554C400097CF7F /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
+		9AFD61081CA40A9500E1CC32 /* APIClientWithoutRxTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientWithoutRxTest.swift; sourceTree = "<group>"; };
 		B7E63F6E16809DCF16AECF97 /* Pods-BordersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BordersTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BordersTests/Pods-BordersTests.release.xcconfig"; sourceTree = "<group>"; };
 		B9D33A4DBCB78E27D2FAFB52 /* Pods_Borders.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Borders.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED339DFE5CA63E00485E464F /* Pods_BordersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BordersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +152,7 @@
 				82043AC01C5543D40097CF7F /* CountryTests.swift */,
 				82043AC41C5549DC0097CF7F /* ResourceTests.swift */,
 				82043AC61C554A6E0097CF7F /* APIClientTests.swift */,
+				9AFD61081CA40A9500E1CC32 /* APIClientWithoutRxTest.swift */,
 				82043AC81C554C400097CF7F /* test.json */,
 			);
 			path = BordersTests;
@@ -426,6 +429,7 @@
 				82043AC51C5549DC0097CF7F /* ResourceTests.swift in Sources */,
 				82043AC31C55464C0097CF7F /* CountriesAPITests.swift in Sources */,
 				82043AC71C554A6E0097CF7F /* APIClientTests.swift in Sources */,
+				9AFD61091CA40A9500E1CC32 /* APIClientWithoutRxTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
